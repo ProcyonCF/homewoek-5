@@ -1,0 +1,26 @@
+void setup() {
+  fullScreen(P3D);
+  textSize(32);
+}
+float timer = 0;
+void draw() {
+  background(0);
+  stroke(#74F599);
+  noFill();
+  lights();
+  pushMatrix();
+  translate(width/2, height/2, 200 * sin(timer));
+  if (mouseButton == LEFT) {
+    rotateX(mouseY * 0.05);
+    rotateY(mouseX * 0.05);
+    sphereDetail(mouseX / 4);
+  }
+  rotateY(timer);
+  rotateX(PI/6);
+  sphere(300);
+  textMode(CENTER);
+  fill(255, 0, 0);
+  popMatrix();
+  
+  timer = (timer+0.01)%TWO_PI;
+}
